@@ -86,66 +86,101 @@ const fake5 = {
   story: 'Thrown on the street'
 };
 
+const fake6 = {
+  imageURL:
+    'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
+  imageDescription:
+    'A smiling golden-brown golden retreiver listening to music.',
+  name: 'Fake6',
+  sex: 'Male',
+  age: 3,
+  breed: 'Golden Retriever',
+  story: 'Owner Passed away'
+};
+
+const fake7 = {
+  imageURL:
+    'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
+  imageDescription:
+    'A smiling golden-brown golden retreiver listening to music.',
+  name: 'Fake7',
+  sex: 'Male',
+  age: 3,
+  breed: 'Golden Retriever',
+  story: 'Owner Passed away'
+};
+const fake8 = {
+  imageURL:
+    'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
+  imageDescription:
+    'A smiling golden-brown golden retreiver listening to music.',
+  name: 'Fake8',
+  sex: 'Male',
+  age: 3,
+  breed: 'Golden Retriever',
+  story: 'Owner Passed away'
+};
+const fake9 = {
+  imageURL:
+    'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
+  imageDescription:
+    'A smiling golden-brown golden retreiver listening to music.',
+  name: 'Fake9',
+  sex: 'Male',
+  age: 3,
+  breed: 'Golden Retriever',
+  story: 'Owner Passed away'
+};
+
+const fake10 = {
+  imageURL:
+    'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
+  imageDescription:
+    'A smiling golden-brown golden retreiver listening to music.',
+  name: 'Fake10',
+  sex: 'Male',
+  age: 3,
+  breed: 'Golden Retriever',
+  story: 'Owner Passed away'
+};
+
 function peek(queue) {
   let node = queue.first;
   if (node === null) {
-   return null;
-  } 
+    return null;
+  }
   return node.data;
 }
+
 qCat.enqueue(fake1);
 qCat.enqueue(fake2);
 qCat.enqueue(fake3);
 qCat.enqueue(fake4);
 qCat.enqueue(fake5);
 
-//Write peek function fifo, front of queue
-//console.log(qCat);
+qDog.enqueue(fake6);
+qDog.enqueue(fake7);
+qDog.enqueue(fake8);
+qDog.enqueue(fake9);
+qDog.enqueue(fake10);
 
-console.log(peek(qCat));
 
 app.get('/api/cat', (req, res) => {
-  // q.enqueue('Sunny');
-  //console.log(q);
-  //q.dequeue();
-  //console.log(q);
-  //return peek(catQueue) display the correct node.
-  // return res.json({
-  //   imageURL:
-  //     'https://assets3.thrillist.com/v1/image/2622128/size/tmg-slideshow_l.jpg',
-  //   imageDescription:
-  //     'Orange bengal cat with black stripes lounging on concrete.',
-  //   name: 'Fluffy',
-  //   sex: 'Female',
-  //   age: 2,
-  //   breed: 'Bengal',
-  //   story: 'Thrown on the street'
-  // });
   return res.json(peek(qCat));
 });
 
 app.get('/api/dog', (req, res) => {
-  return res.json({
-    imageURL:
-      'http://www.dogster.com/wp-content/uploads/2015/05/Cute%20dog%20listening%20to%20music%201_1.jpg',
-    imageDescription:
-      'A smiling golden-brown golden retreiver listening to music.',
-    name: 'Zeus',
-    sex: 'Male',
-    age: 3,
-    breed: 'Golden Retriever',
-    story: 'Owner Passed away'
-  });
+  return res.json(peek(qDog));
 });
 
-//api/cat and api/dog use dequeue adopt button will attach to this.
+
 app.delete('/api/cat', (req, res) => {
-  //res.json('delete working');
+  qCat.dequeue();
   return res.sendStatus(204);
 });
 
 app.delete('/api/dog', (req, res) => {
-  //res.json('delete working');
+  qDog.dequeue();
   return res.sendStatus(204);
 });
 
